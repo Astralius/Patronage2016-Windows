@@ -7,6 +7,10 @@ using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.Foundation.Metadata;
+using Windows.Phone.UI.Input;
+using Windows.UI;
+using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -40,12 +44,12 @@ namespace PhotoManager
         protected override void OnLaunched(LaunchActivatedEventArgs e)
         {
 
-#if DEBUG
-            if (System.Diagnostics.Debugger.IsAttached)
-            {
-                this.DebugSettings.EnableFrameRateCounter = true;
-            }
-#endif
+            //#if DEBUG
+            //            if (System.Diagnostics.Debugger.IsAttached)
+            //            {
+            //                this.DebugSettings.EnableFrameRateCounter = true;
+            //            }
+            //#endif
 
             Frame rootFrame = Window.Current.Content as Frame;
 
@@ -76,6 +80,37 @@ namespace PhotoManager
             }
             // Ensure the current window is active
             Window.Current.Activate();
+
+            // Zmieniam kolorystykę górnego górnego paska aplikacji desktopowej
+            var applicationView = ApplicationView.GetForCurrentView();
+            var titleBar = applicationView.TitleBar;
+
+            titleBar.BackgroundColor = titleBar.ButtonBackgroundColor = titleBar.InactiveBackgroundColor = titleBar.ButtonInactiveBackgroundColor = Colors.Black;
+            titleBar.ForegroundColor = titleBar.ButtonForegroundColor = titleBar.ButtonHoverForegroundColor = Colors.White;
+            titleBar.InactiveForegroundColor = titleBar.ButtonInactiveForegroundColor = Colors.LightGray;
+            titleBar.ButtonHoverBackgroundColor = (Current.Resources["AppBarItemPointerOverBackgroundThemeBrush"] as SolidColorBrush).Color;
+
+            if(Windows.Foundation.Metadata.ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
+            {
+               HardwareButtons.CameraPressed += HardwareButtons_CameraPressed;
+            }
+        }
+
+        public Platform DetectPlatform()
+        {
+            if (ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
+            {
+                return Platform.WindowsPhone;
+            }
+            else
+            {
+                return Platform.Windows;
+            }
+        }
+
+        private void HardwareButtons_CameraPressed(object sender, CameraEventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>

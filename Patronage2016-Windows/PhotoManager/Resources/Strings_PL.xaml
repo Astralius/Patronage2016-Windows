@@ -1,0 +1,22 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PhotoManager.Resources">
+    
+    <x:String x:Key="TitleText">ZDJĘCIA</x:String>
+    <x:String x:Key="SinglePhotoText">Pojedyncze zdjęcie</x:String>
+    <x:String x:Key="PhotosListText">Lista zdjęć</x:String>
+    <x:String x:Key="TakePhotoText">Zrób zdjęcie</x:String>
+    <x:String x:Key="Refresh">Odśwież</x:String>
+    <x:String x:Key="Share">Podziel się</x:String>
+
+    <x:String x:Key="Metadata">Informacje o zdjęciu</x:String>
+    <x:String x:Key="Metadata_Name">Nazwa:</x:String>
+    <x:String x:Key="Metadata_DateTaken">Data wykonania:</x:String>
+    <x:String x:Key="Metadata_Lat">Szerokość geogr.:</x:String>
+    <x:String x:Key="Metadata_Long">Długość geogr.:</x:String>
+    <x:String x:Key="Metadata_FileSize">Rozmiar na dysku:</x:String>
+    <x:String x:Key="Metadata_Size">Wielkosć (piks.):</x:String>
+    
+</ResourceDictionary>
+    
