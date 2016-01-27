@@ -18,6 +18,8 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using Microsoft.Practices.Unity;
+using PhotoManager.Services;
 
 namespace PhotoManager
 {
@@ -52,11 +54,14 @@ namespace PhotoManager
             //#endif
 
             Frame rootFrame = Window.Current.Content as Frame;
-
+            var container = new UnityContainer();
+            container.RegisterType<IPhotoService, PhotoService>();
             // Do not repeat app initialization when the Window already has content,
             // just ensure that the window is active
             if (rootFrame == null)
             {
+                
+
                 // Create a Frame to act as the navigation context and navigate to the first page
                 rootFrame = new Frame();
 

@@ -20,7 +20,7 @@
                         <AdaptiveTrigger MinWindowWidth="1024"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="itemGridView.Visibility" Value="Visible"/>
+                        <Setter Target="ItemGridView.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
                 <VisualState x:Name="mobile">
@@ -28,40 +28,40 @@
                         <AdaptiveTrigger MinWindowWidth="0"/>
                     </VisualState.StateTriggers>
                     <VisualState.Setters>
-                        <Setter Target="commandBar.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
-                        <Setter Target="commandBar.(RelativePanel.AlignTopWithPanel)" Value="False"/>
-                        <Setter Target="itemListView.Visibility" Value="Visible"/>
-                        <Setter Target="itemListView.(RelativePanel.AlignBottomWithPanel)" Value="False"/>
-                        <Setter Target="itemListView.(RelativePanel.Above)" Value="commandBar"/>
-                        <Setter Target="embeddedTitle.Visibility" Value="Collapsed"/>
-                        <Setter Target="title.Visibility" Value="Visible"/>
-                        <Setter Target="topBar.Visibility" Value="Visible"/>
+                        <Setter Target="CommandBar.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="CommandBar.(RelativePanel.AlignTopWithPanel)" Value="False"/>
+                        <Setter Target="ItemListView.Visibility" Value="Visible"/>
+                        <Setter Target="ItemListView.(RelativePanel.AlignBottomWithPanel)" Value="False"/>
+                        <Setter Target="ItemListView.(RelativePanel.Above)" Value="CommandBar"/>
+                        <Setter Target="EmbeddedTitle.Visibility" Value="Collapsed"/>
+                        <Setter Target="Title.Visibility" Value="Visible"/>
+                        <Setter Target="TopBar.Visibility" Value="Visible"/>
                     </VisualState.Setters>
                 </VisualState>
             </VisualStateGroup>
         </VisualStateManager.VisualStateGroups>
 
-        <Border x:Name="topBar" 
+        <Border x:Name="TopBar" 
                 RelativePanel.AlignTopWithPanel="True" 
                 RelativePanel.AlignLeftWithPanel="True"
                 RelativePanel.AlignRightWithPanel="True"
                 Height="48"
                 Background="#FF303030"
                 Visibility="Collapsed"/>
-        <TextBlock x:Name="title"
+        <TextBlock x:Name="Title"
                            Text="ZDJĘCIA"
                            Margin="68,5"
                            FontSize="24"
                            FontWeight="Bold"
                            Visibility="Collapsed"/>
-        <CommandBar x:Name="commandBar"
+        <CommandBar x:Name="CommandBar"
                     RelativePanel.AlignTopWithPanel="True"
                     RelativePanel.AlignBottomWithPanel="False"
                     RelativePanel.AlignRightWithPanel="True"
                     RelativePanel.AlignLeftWithPanel="True"
                     Background="#FF303030">
             <CommandBar.Content>
-                <TextBlock x:Name="embeddedTitle"
+                <TextBlock x:Name="EmbeddedTitle"
                            Text="ZDJĘCIA"
                            Margin="20,5"
                            FontSize="24"
@@ -81,9 +81,9 @@
             </CommandBar.PrimaryCommands>
         </CommandBar>
 
-        <GridView x:Name="itemGridView"
+        <GridView x:Name="ItemGridView"
                   Padding="20,20,20,20"
-                  RelativePanel.Below="commandBar"
+                  RelativePanel.Below="CommandBar"
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.AlignBottomWithPanel="True"
@@ -98,12 +98,18 @@
                     <Grid HorizontalAlignment="Left"
                           Width="283"
                           Height="220">
-                        <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}">
-                            <Image Source="{Binding Thumbnail}"
-                                   Stretch="UniformToFill"
-                                   AutomationProperties.Name="{Binding Name}"/>
-                        </Border>
-                        <StackPanel VerticalAlignment="Bottom"
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="4*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <Image
+                            Width="100" 
+                            Height="100" 
+                            Source="{Binding ImageSource}"
+                            Stretch="UniformToFill"
+                            AutomationProperties.Name="{Binding Name}">
+                        </Image>
+                        <StackPanel Grid.Row="1" VerticalAlignment="Bottom"
                                     Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}">
                             <TextBlock Text="{Binding Name}"
                                        Foreground="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"
@@ -115,10 +121,11 @@
                 </DataTemplate>
             </GridView.ItemTemplate>
         </GridView>
-        <ListView x:Name="itemListView" 
+        
+        <ListView x:Name="ItemListView" 
                   Margin="0,20,0,0"
                   Padding="20,0"
-                  RelativePanel.Below="commandBar"
+                  RelativePanel.Below="CommandBar"
                   RelativePanel.AlignLeftWithPanel="True"
                   RelativePanel.AlignRightWithPanel="True"
                   RelativePanel.AlignBottomWithPanel="True"
@@ -134,16 +141,21 @@
                           Width="283"
                           Height="220">
                         <Border Background="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}">
-                            <Image Source="{Binding Thumbnail}"
+                            <Image
                                    Stretch="UniformToFill"
-                                   AutomationProperties.Name="{Binding Name}"/>
+                                   AutomationProperties.Name="{Binding Name}">
+                                <Image.Source>
+                                    <BitmapImage UriSource="{Binding ImageSource}"></BitmapImage>
+                                </Image.Source>
+                            </Image>
                         </Border>
                         <StackPanel VerticalAlignment="Bottom"
                                     Background="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}">
                             <TextBlock Text="{Binding Name}"
-                                       Foreground="{ThemeResource ListViewItemOverlayBackgroundThemeBrush}"
+                                       Foreground="{ThemeResource ListViewItemOverlayForegroundThemeBrush}"
                                        Style="{StaticResource BaseTextBlockStyle}"
-                                       FontWeight="SemiLight" Height="44"
+                                       FontWeight="SemiLight" 
+                                       Height="44"
                                        Margin="15,5"/>
                         </StackPanel>
                     </Grid>

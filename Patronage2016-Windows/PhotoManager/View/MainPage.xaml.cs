@@ -1,4 +1,5 @@
 ﻿using PhotoManager.View;
+using PhotoManager.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -13,6 +14,7 @@ using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
+using PhotoManager.Services;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
@@ -27,6 +29,7 @@ namespace PhotoManager
         {
             this.InitializeComponent();
             MainFrame.Navigate(typeof(PhotosListPage));
+            DataContext = new PhotosViewModel(new PhotoService());
         }
 
         private void HamburgerButton_Click(object sender, RoutedEventArgs e)

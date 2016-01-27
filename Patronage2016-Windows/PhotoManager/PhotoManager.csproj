@@ -98,14 +98,17 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Model\Photo.cs" />
-    <Compile Include="ViewModel\PhotoViewModel.cs" />
+    <Compile Include="RelayCommand.cs" />
+    <Compile Include="Services\IPhotoService.cs" />
+    <Compile Include="Services\PhotoService.cs" />
+    <Compile Include="ViewModel\PhotosViewModel.cs" />
     <Compile Include="View\MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\PhotosListPage.xaml.cs">
       <DependentUpon>PhotosListPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SinglePhotoPage.xaml.cs">
+    <Compile Include="ViewModel\SinglePhotoPage.xaml.cs">
       <DependentUpon>SinglePhotoPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -144,7 +147,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SinglePhotoPage.xaml">
+    <Page Include="ViewModel\SinglePhotoPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

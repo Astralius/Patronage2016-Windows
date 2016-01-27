@@ -1,22 +1,26 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.Storage;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace PhotoManager.Model
 {
     public class Photo
     {
-        public String Name { get; set; }
-        public String FileExtension { get; set; }
+        public string Name { get; set; }
+        public string FileExtension { get; set; }
         public DateTime DateTaken { get; set; }
+        public string ImageSource { get; set; }
+    }
 
-        public Photo(String name, String fileExtension)
-        {
-            Name = name;
-            FileExtension = fileExtension;
-        }
+    public class PhotoService
+    {
+        //public async static Task<List<Photo>> GetPhotos()
+        //{
+        //    Debug.WriteLine("GET for Photos");
+
+        //    IReadOnlyList<IStorageItem> itemsList = await KnownFolders.CameraRoll();
+        //    Item                 
+        //}
+
+        //public async 
     }
 }
