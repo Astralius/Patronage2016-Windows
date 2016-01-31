@@ -3,17 +3,10 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
-using UWP_Photos.View;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.Foundation.Metadata;
-using Windows.Media.Capture;
-using Windows.Phone.UI.Input;
-using Windows.Storage;
-using Windows.UI;
-using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -22,7 +15,7 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-namespace UWP_Photos
+namespace PatronagePhotographer
 {
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
@@ -79,75 +72,10 @@ namespace UWP_Photos
                 // When the navigation stack isn't restored navigate to the first page,
                 // configuring the new page by passing required information as a navigation
                 // parameter
-                rootFrame.Navigate(typeof(MainPage), e.Arguments);
+                rootFrame.Navigate(typeof(View.MainPage), e.Arguments);
             }
             // Ensure the current window is active
-
-            // Zmieniam kolorystykę górnego górnego paska aplikacji desktopowej
-            var applicationView = ApplicationView.GetForCurrentView();
-            var titleBar = applicationView.TitleBar;
-
-            titleBar.BackgroundColor = titleBar.ButtonBackgroundColor = titleBar.InactiveBackgroundColor = titleBar.ButtonInactiveBackgroundColor = Colors.Black;
-            titleBar.ForegroundColor = titleBar.ButtonForegroundColor = titleBar.ButtonHoverForegroundColor = Colors.White;
-            titleBar.InactiveForegroundColor = titleBar.ButtonInactiveForegroundColor = Colors.LightGray;
-            titleBar.ButtonHoverBackgroundColor = (Current.Resources["AppBarItemPointerOverBackgroundThemeBrush"] as SolidColorBrush).Color;
-
-            if (DetectPlatform() == Platform.WindowsPhone)
-            {
-                HardwareButtons.CameraPressed += HardwareButtons_CameraPressed;
-                HardwareButtons.BackPressed += HardwareButtons_BackPressed;
-            }
-        }
-
-        private async void HardwareButtons_CameraPressed(object sender, CameraEventArgs e)
-        {
-            CameraCaptureUI captureUI = new CameraCaptureUI();
-            captureUI.PhotoSettings.Format = CameraCaptureUIPhotoFormat.Jpeg;
-            captureUI.PhotoSettings.AllowCropping = false;
-
-            StorageFile photo = await captureUI.CaptureFileAsync(CameraCaptureUIMode.Photo);
-            StorageFolder storageFolder = KnownFolders.CameraRoll;
-
-            if (photo == null || storageFolder == null)
-            {
-                // Użytkownik anulował robienie zdjęcia
-                return;
-            }
-
-            StorageFile storageFile = await storageFolder.CreateFileAsync(
-              "PatronagePhoto.jpg",
-              CreationCollisionOption.GenerateUniqueName);
-
-            using (Stream outputStream = await storageFile.OpenStreamForWriteAsync())
-            {
-                using (Stream photoStream = await photo.OpenStreamForReadAsync())
-                    await photoStream.CopyToAsync(outputStream);
-            }
-        }
-
-        private void HardwareButtons_BackPressed(object sender, BackPressedEventArgs e)
-        {
-            Frame rootFrame = Window.Current.Content as Frame;
-            if (rootFrame == null)
-                return;
-
-            if (rootFrame.CanGoBack && e.Handled == false)
-            {
-                e.Handled = true;
-                rootFrame.GoBack();
-            }
-        }
-
-        public Platform DetectPlatform()
-        {
-            if (ApiInformation.IsTypePresent("Windows.Phone.UI.Input.HardwareButtons"))
-            {
-                return Platform.WindowsPhone;
-            }
-            else
-            {
-                return Platform.Windows;
-            }
+            Window.Current.Activate();
         }
 
         /// <summary>

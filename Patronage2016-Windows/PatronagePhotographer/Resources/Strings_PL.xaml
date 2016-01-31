@@ -1,7 +1,6 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:UWP_Photos.Resources">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <x:String x:Key="TitleText">ZDJĘCIA</x:String>
     <x:String x:Key="SinglePhotoText">Pojedyncze zdjęcie</x:String>
@@ -11,11 +10,11 @@
     <x:String x:Key="Share">Podziel się</x:String>
 
     <x:String x:Key="Metadata">Informacje o zdjęciu</x:String>
-    <x:String x:Key="Metadata_Name">Nazwa:</x:String>
-    <x:String x:Key="Metadata_DateTaken">Data wykonania:</x:String>
-    <x:String x:Key="Metadata_Lat">Szerokość geogr.:</x:String>
-    <x:String x:Key="Metadata_Long">Długość geogr.:</x:String>
-    <x:String x:Key="Metadata_FileSize">Rozmiar na dysku:</x:String>
-    <x:String x:Key="Metadata_Size">Wielkosć (piks.):</x:String>
+    <x:String x:Key="MetadataName">Nazwa:</x:String>
+    <x:String x:Key="MetadataDateTaken">Data wykonania:</x:String>
+    <x:String x:Key="MetadataLat">Szerokość geogr.:</x:String>
+    <x:String x:Key="MetadataLong">Długość geogr.:</x:String>
+    <x:String x:Key="MetadataFileSize">Rozmiar na dysku:</x:String>
+    <x:String x:Key="MetadataSize">Wielkosć (piks.):</x:String>
 
 </ResourceDictionary>

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.24720.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UWP_Photos", "UWP_Photos\UWP_Photos.csproj", "{77570511-6288-4C42-8D60-6BE6DEAE5705}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PatronagePhotographer", "PatronagePhotographer\PatronagePhotographer.csproj", "{5D89BADB-78B7-418D-A677-8BFC76B8340A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,24 +15,24 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|ARM.ActiveCfg = Debug|ARM
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|ARM.Build.0 = Debug|ARM
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|ARM.Deploy.0 = Debug|ARM
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|x64.ActiveCfg = Debug|x64
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|x64.Build.0 = Debug|x64
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|x64.Deploy.0 = Debug|x64
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|x86.ActiveCfg = Debug|x86
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|x86.Build.0 = Debug|x86
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Debug|x86.Deploy.0 = Debug|x86
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|ARM.ActiveCfg = Release|ARM
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|ARM.Build.0 = Release|ARM
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|ARM.Deploy.0 = Release|ARM
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|x64.ActiveCfg = Release|x64
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|x64.Build.0 = Release|x64
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|x64.Deploy.0 = Release|x64
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|x86.ActiveCfg = Release|x86
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|x86.Build.0 = Release|x86
-		{77570511-6288-4C42-8D60-6BE6DEAE5705}.Release|x86.Deploy.0 = Release|x86
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|ARM.ActiveCfg = Debug|ARM
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|ARM.Build.0 = Debug|ARM
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|ARM.Deploy.0 = Debug|ARM
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|x64.ActiveCfg = Debug|x64
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|x64.Build.0 = Debug|x64
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|x64.Deploy.0 = Debug|x64
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|x86.ActiveCfg = Debug|x86
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|x86.Build.0 = Debug|x86
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Debug|x86.Deploy.0 = Debug|x86
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|ARM.ActiveCfg = Release|ARM
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|ARM.Build.0 = Release|ARM
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|ARM.Deploy.0 = Release|ARM
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|x64.ActiveCfg = Release|x64
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|x64.Build.0 = Release|x64
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|x64.Deploy.0 = Release|x64
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|x86.ActiveCfg = Release|x86
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|x86.Build.0 = Release|x86
+		{5D89BADB-78B7-418D-A677-8BFC76B8340A}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

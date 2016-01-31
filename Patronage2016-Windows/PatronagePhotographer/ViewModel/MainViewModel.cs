@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace UWP_Photos.ViewModel
+namespace PatronagePhotographer.ViewModel
 {
     class MainViewModel
     {

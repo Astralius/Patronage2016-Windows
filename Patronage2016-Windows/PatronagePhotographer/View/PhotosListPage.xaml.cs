@@ -17,13 +17,12 @@ using Windows.UI.Xaml.Navigation;
 using Windows.Media.Capture;
 using Windows.Storage;
 using Windows.Storage.Streams;
-
-using UWP_Photos.Model;
 using System.Threading.Tasks;
+using PatronagePhotographer.Model;
 
 // The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace UWP_Photos.View
+namespace PatronagePhotographer.View
 {
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.

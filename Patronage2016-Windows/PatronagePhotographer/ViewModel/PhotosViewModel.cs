@@ -9,9 +9,9 @@ using System.Windows.Input;
 using Windows.Graphics.Printing;
 using Windows.Web.Http.Headers;
 
-using UWP_Photos.Model;
+using PatronagePhotographer.Model;
 
-namespace UWP_Photos.ViewModel
+namespace PatronagePhotographer.ViewModel
 {
     //public class PhotosViewModel : INotifyPropertyChanged
     //{
