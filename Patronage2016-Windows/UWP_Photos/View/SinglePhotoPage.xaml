@@ -1,0 +1,174 @@
+﻿<Page
+    x:Class="UWP_Photos.View.SinglePhotoPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:UWP_Photos.View"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:data="using:UWP_Photos.Model"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+        <ResourceDictionary Source="/Resources/MyAppStyles.xaml"/>
+    </Page.Resources>
+
+    <RelativePanel>
+        <RelativePanel.ChildrenTransitions>
+            <TransitionCollection>
+                <EntranceThemeTransition/>
+            </TransitionCollection>
+        </RelativePanel.ChildrenTransitions>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+
+                <VisualState x:Name="desktop">
+                    <VisualState.StateTriggers>
+                        <!--Domyślny layout-->
+                        <AdaptiveTrigger MinWindowWidth="1024"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+
+                <VisualState x:Name="mobile">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <Setter Target="MetadataPanel.(Grid.Row)" Value="1"/>
+                        <Setter Target="MetadataPanel.(Grid.Column)" Value="0"/>
+                        <Setter Target="CommandBar.(RelativePanel.AlignBottomWithPanel)" Value="True"/>
+                        <Setter Target="CommandBar.(RelativePanel.AlignTopWithPanel)" Value="False"/>
+                        <Setter Target="TopBar.Visibility" Value="Visible"/>
+                        <Setter Target="DesktopTitle.Visibility" Value="Collapsed"/>
+                        <Setter Target="MobileTitle.Visibility" Value="Visible"/>
+                        <Setter Target="LayoutGrid.(RelativePanel.Below)" Value="TopBar"/>
+                        <Setter Target="LayoutGrid.(RelativePanel.AlignBottomWithPanel)" Value="False"/>
+                        <Setter Target="LayoutGrid.(RelativePanel.Above)" Value="CommandBar"/>
+                        <Setter Target="LayoutGridRow_1.Height" Value="2*"/>
+                        <Setter Target="LayoutGridRow_2.Height" Value="1*"/>
+                        <Setter Target="LayoutGridCol_1.Width" Value="*"/>
+                        <Setter Target="LayoutGridCol_2.Width" Value="Auto"/>
+                    </VisualState.Setters>
+                </VisualState>
+
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <Border x:Name="TopBar" 
+                RelativePanel.AlignTopWithPanel="True" 
+                RelativePanel.AlignLeftWithPanel="True"
+                RelativePanel.AlignRightWithPanel="True"
+                Height="48"
+                Background="#FF303030"
+                Visibility="Collapsed"/>
+
+        <TextBlock x:Name="MobileTitle"
+                   Text="{StaticResource TitleText}"
+                   Margin="68,5"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Visibility="Collapsed"/>
+        
+        <CommandBar x:Name="CommandBar"
+                    RelativePanel.AlignTopWithPanel="True"
+                    RelativePanel.AlignBottomWithPanel="False"
+                    RelativePanel.AlignRightWithPanel="True"
+                    RelativePanel.AlignLeftWithPanel="True"
+                    Background="#FF303030">
+            <CommandBar.Content>
+                <TextBlock x:Name="DesktopTitle"
+                           Text="ZDJĘCIA"
+                           Margin="20,5"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Visibility="Visible"/>
+            </CommandBar.Content>
+            <CommandBar.PrimaryCommands>
+                <AppBarButton Icon="Refresh"
+                              Label="Refresh" 
+                              Click="RefreshButton_Click"/>
+                <AppBarButton Icon="Camera"
+                              Label="Take Picture" 
+                              Click="Camera_Click"/>
+                <AppBarButton Icon="Link"
+                              Label="Share"
+                              Click="ShareButton_Click"/>
+            </CommandBar.PrimaryCommands>
+        </CommandBar>
+
+        <Grid x:Name="LayoutGrid"
+              Background="Black"
+              RelativePanel.Below="CommandBar"
+              RelativePanel.Above=""
+              RelativePanel.AlignBottomWithPanel="True"
+              RelativePanel.AlignLeftWithPanel="True"
+              RelativePanel.AlignRightWithPanel="True">
+
+            <Grid.RowDefinitions>
+                <RowDefinition x:Name="LayoutGridRow_1" Height="*"/>
+                <RowDefinition x:Name="LayoutGridRow_2" Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LayoutGridCol_1" Width="2*"/>
+                <ColumnDefinition x:Name="LayoutGridCol_2" Width="1*"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="/Assets/All.jpg" 
+                   Stretch="Uniform" 
+                   Margin="20,20,20,20"
+                   HorizontalAlignment="Center"/>
+
+            <RelativePanel x:Name="MetadataPanel"  
+                           Grid.Row="0" 
+                           Grid.Column="1"
+                           Background="#FF171717">
+                <TextBlock x:Name="PhotoInfoText" 
+                           Height="24" 
+                           Text="{StaticResource Metadata}" 
+                           FontWeight="Bold" 
+                           Margin="10,10,0,5" 
+                           RelativePanel.AlignTopWithPanel="True"
+                           RelativePanel.AlignLeftWithPanel="True"
+                           RelativePanel.AlignRightWithPanel="True"/>
+                <ScrollViewer RelativePanel.Below="PhotoInfoText"
+                              RelativePanel.AlignLeftWithPanel="True"
+                              RelativePanel.AlignRightWithPanel="True"
+                              RelativePanel.AlignBottomWithPanel="True"
+                              VerticalScrollBarVisibility="Auto"
+                              HorizontalScrollBarVisibility="Hidden">
+                    <Grid x:Name="MetadataGrid">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="5*"/>
+                        </Grid.ColumnDefinitions>
+                        <StackPanel Margin="20,0,0,0">
+                            <TextBlock Text="{StaticResource Metadata_Name}"/>
+                            <TextBlock Text="{StaticResource Metadata_Size}"/>
+                            <TextBlock Text="{StaticResource Metadata_FileSize}"/>
+                        </StackPanel>
+                        <RelativePanel Grid.Column="1">
+                            <ListView x:Name="MetadataList" 
+                                      Grid.Column="1"
+                                      RelativePanel.AlignTopWithPanel="True"
+                                      RelativePanel.AlignLeftWithPanel="True"
+                                      RelativePanel.AlignBottomWithPanel="True"
+                                      RelativePanel.AlignRightWithPanel="True">
+                                <!--<ListView.ItemTemplate>
+                                    <DataTemplate>-->
+                                <StackPanel>
+                                    <TextBlock Text="Zdjęcie1.png"/>
+                                    <TextBlock Text="1920 x 1080"/>
+                                    <TextBlock Text="2.58 MB"/>
+                                </StackPanel>
+                                <!--</DataTemplate>
+                                </ListView.ItemTemplate>-->
+                            </ListView>
+                        </RelativePanel>
+                    </Grid>
+                </ScrollViewer>
+            </RelativePanel>
+        </Grid>
+    </RelativePanel>
+
+</Page>
